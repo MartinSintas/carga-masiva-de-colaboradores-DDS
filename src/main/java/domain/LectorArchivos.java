@@ -63,13 +63,14 @@ public class LectorArchivos {
         ArrayList<Colaborador> colaboradores = new ArrayList<>();
 
         for (ArchivoColaboradores linearArchivoDeColaboradores: this.lineasArchivo){
-            Usuario unUsuarioBuscado = Usuario.buscarUsuario(usuarios, linearArchivoDeColaboradores.getIdUsuario());
-
+            Usuario unUsuarioBuscado = Usuario.buscarUsuario(usuarios, linearArchivoDeColaboradores.getDocumento());
+            //supongo que el usuario es por documento... el numero
+            assert unUsuarioBuscado != null;
             Colaborador unColaborador = new Colaborador(
                     linearArchivoDeColaboradores.getNombre(),
-                    linearArchivoDeColaboradores.getFechaInscripcion(),
                     linearArchivoDeColaboradores.getFechaDeColaboracion(),
-                    unUsuarioBuscado
+                    unUsuarioBuscado.getColaborador()
+                    //revisar esto 'ultimo
             );
 
             colaboradores.add(unColaborador);
