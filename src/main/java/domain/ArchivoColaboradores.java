@@ -29,7 +29,7 @@ public class ArchivoColaboradores {
         return tipoDoc;
     }
 
-    public Number getDocumento() {
+    public Integer getDocumento() {
         return documento;
     }
 
@@ -53,7 +53,7 @@ public class ArchivoColaboradores {
         return formaDeColaboracion;
     }
 
-    public Number getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 

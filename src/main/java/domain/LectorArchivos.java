@@ -69,7 +69,7 @@ public class LectorArchivos {
             for (ArchivoColaboradores linearArchivoDeColaboradores : this.lineasArchivo){
                 usuarioYaCargado = false;
                 Usuario nuevoUsuario = new Usuario(linearArchivoDeColaboradores.getTipoDoc(),
-                        (Integer) linearArchivoDeColaboradores.getDocumento()); // PORQUE DEMIONIOS LO TENGO QUE CASTEAR
+                         linearArchivoDeColaboradores.getDocumento()); // PORQUE DEMIONIOS LO TENGO QUE CASTEAR
 
                 for( Usuario usuarioGuardado : usuarios){
                     if (nuevoUsuario.getDocumento().equals(usuarioGuardado.getDocumento())){

@@ -5,13 +5,13 @@ import java.time.LocalDate;
 public class Colaborador {
     //public Enum tipoDoc; despues agregar enum
     public String tipoDoc;
-    public Number documento;
+    public Integer documento;
     public String nombre;
     public String apellido;
     public String mail;
     public LocalDate fechaDeColaboracion;
     public String formaDeColaboracion;
-    public Number cantidad;
+    public Integer cantidad;
 
     //public Colaborador colaborador;
     //agregar enum de tipo doc
@@ -28,8 +28,8 @@ public class Colaborador {
     }
 
 
-public Colaborador(String tipoDoc, Number documento, String nombre, String apellido, String mail,
-                   LocalDate fechaDeColaboracion, String formaDeColaboracion,Number cantidad ){
+public Colaborador(String tipoDoc, Integer documento, String nombre, String apellido, String mail,
+                   LocalDate fechaDeColaboracion, String formaDeColaboracion,Integer cantidad ){
     this.tipoDoc = tipoDoc;
     this.documento = documento;
     this.nombre = nombre;
@@ -49,11 +49,11 @@ public Colaborador(String tipoDoc, Number documento, String nombre, String apell
         this.tipoDoc = tipoDoc;
     }
 
-    public Number getDocumento(){
+    public Integer getDocumento(){
         return documento;
     }
 
-    public void setDocumento(Number documento){
+    public void setDocumento(Integer documento){
         this.documento = documento;
     }
 
