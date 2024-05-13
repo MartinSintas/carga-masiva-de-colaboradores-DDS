@@ -1,16 +1,16 @@
 package domain;
 
-import  java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Usuario {
-    private Number documento;
     private String tipoDoc;
+    private Integer documento;
+    //private String identificacion = tipoDoc + " " + documento;
 
     private Colaborador colaborador;
 
     //me busca en la lista de usuarios (ver de donde sale) a los usuarios segun su dni
-    public static Usuario buscarUsuario(ArrayList<Usuario> usuarios, Number documento) {
+    public static Usuario buscarUsuario(ArrayList<Usuario> usuarios, Integer documento) {
         for (Usuario usuario : usuarios) {
             if (usuario.getDocumento().equals(documento)) {
                 return usuario; // Retorna el usuario si se encuentra
@@ -30,12 +30,12 @@ public class Usuario {
         this.colaborador = colaborador;
     }
 
-    public Usuario(Number documento, String tipoDoc){
+    public Usuario(String tipoDoc, Integer documento){
         this.tipoDoc = tipoDoc;
         this.documento = documento;
     }
 
-    public Number getDocumento(){
+    public Integer getDocumento(){
         return documento;
     }
 
@@ -44,7 +44,13 @@ public class Usuario {
     //    return  documento;
     //}
     
-    public String getTipoDoc(){
+
+    public String getTipoDoc() {
         return tipoDoc;
     }
+
+    public void setTipoDoc(String tipoDoc) {
+        this.tipoDoc = tipoDoc;
+    }
+
 }

@@ -22,7 +22,7 @@ public class LectorArchivos {
         List<ArchivoColaboradores> listaDeColaboradores = null;
         try {
             //acá defino el archivo que se va a leer/cargar
-            listaDeColaboradores = new CsvToBeanBuilder(new FileReader(this.rutaArchivo))
+            listaDeColaboradores = new CsvToBeanBuilder<ArchivoColaboradores>(new FileReader(this.rutaArchivo))
                     //con esta implementación se puede skipear la 1era linea del archivo csv
                     .withSkipLines(1)
                     //con esta implementación podemos elegir el caracter que se use para delimitar
@@ -36,14 +36,40 @@ public class LectorArchivos {
         }
             this.lineasArchivo = listaDeColaboradores;
     }
+
+    public ArrayList<Colaborador> listarColaboradores() {
+        boolean colaboradorYacargado = false;
+        ArrayList<Colaborador> colaboradores = new ArrayList<>();
+
+        for (ArchivoColaboradores linearArchivoDeColaboradores : this.lineasArchivo){
+            colaboradorYacargado = false;
+
+            Colaborador nuevoColaborador = new Colaborador(
+                    linearArchivoDeColaboradores.getTipoDoc(),
+                    linearArchivoDeColaboradores.getDocumento(),
+                    linearArchivoDeColaboradores.getNombre(),
+                    linearArchivoDeColaboradores.getApellido(),
+                    linearArchivoDeColaboradores.getMail(),
+                    linearArchivoDeColaboradores.getFechaDeColaboracion(),
+                    linearArchivoDeColaboradores.getFormaDeColaboracion(),
+                    linearArchivoDeColaboradores.getCantidad()
+            );
+
+
+            colaboradores.add(nuevoColaborador);
+        }
+        return  colaboradores;
+    }
+
+
     public ArrayList<Usuario> listarUsuarios(){
         boolean usuarioYaCargado = false;
         ArrayList<Usuario> usuarios = new ArrayList<>();
 
             for (ArchivoColaboradores linearArchivoDeColaboradores : this.lineasArchivo){
                 usuarioYaCargado = false;
-                Usuario nuevoUsuario = new Usuario(linearArchivoDeColaboradores.getDocumento(),
-                        linearArchivoDeColaboradores.getTipoDoc());
+                Usuario nuevoUsuario = new Usuario(linearArchivoDeColaboradores.getTipoDoc(),
+                        (Integer) linearArchivoDeColaboradores.getDocumento()); // PORQUE DEMIONIOS LO TENGO QUE CASTEAR
 
                 for( Usuario usuarioGuardado : usuarios){
                     if (nuevoUsuario.getDocumento().equals(usuarioGuardado.getDocumento())){
@@ -58,23 +84,4 @@ public class LectorArchivos {
             return usuarios;
     }
 
-
-    public ArrayList<Colaborador> listarColaboradores(ArrayList<Usuario> usuarios){
-        ArrayList<Colaborador> colaboradores = new ArrayList<>();
-
-        for (ArchivoColaboradores linearArchivoDeColaboradores: this.lineasArchivo){
-            Usuario unUsuarioBuscado = Usuario.buscarUsuario(usuarios, linearArchivoDeColaboradores.getDocumento());
-            //supongo que el usuario es por documento... el numero
-            assert unUsuarioBuscado != null;
-            Colaborador unColaborador = new Colaborador(
-                    linearArchivoDeColaboradores.getNombre(),
-                    linearArchivoDeColaboradores.getFechaDeColaboracion(),
-                    unUsuarioBuscado.getColaborador()
-                    //revisar esto 'ultimo
-            );
-
-            colaboradores.add(unColaborador);
-        }
-        return  colaboradores;
-    }
 }

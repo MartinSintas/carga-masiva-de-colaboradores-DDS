@@ -4,16 +4,12 @@ import java.time.LocalDate;
 
 import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvDate;
-import lombok.Getter;
-import lombok.Setter;
 
-
-//consigo los setters y getters
 public class ArchivoColaboradores {
  @CsvBindByPosition(position = 0)
     private String tipoDoc;
  @CsvBindByPosition(position = 1)
-    private Number documento;
+    private Integer documento;
  @CsvBindByPosition(position = 2)
     private String nombre;
  @CsvBindByPosition(position = 3)
@@ -26,7 +22,7 @@ public class ArchivoColaboradores {
  @CsvBindByPosition(position = 6)
     private String formaDeColaboracion;
  @CsvBindByPosition(position = 7)
-    private Number cantidad;
+    private Integer cantidad;
 
     // Getters
     public String getTipoDoc() {
@@ -61,12 +57,14 @@ public class ArchivoColaboradores {
         return cantidad;
     }
 
+    //no son utilizados... los comento
     // Setters
+
     public void setTipoDoc(String tipoDoc) {
         this.tipoDoc = tipoDoc;
     }
 
-    public void setDocumento(Number documento) {
+    public void setDocumento(Integer documento) {
         this.documento = documento;
     }
 
@@ -90,7 +88,7 @@ public class ArchivoColaboradores {
         this.formaDeColaboracion = formaDeColaboracion;
     }
 
-    public void setCantidad(Number cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
